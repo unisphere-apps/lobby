@@ -24,7 +24,7 @@
             <a class="nav-link active" href="#"><i class="bi bi-app"></i> Sirius</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="#"><i class="bi bi-gear"></i> Polaris</a>
+            <a class="nav-link active" href="http://localhost:8080/Polaris/"><i class="bi bi-gear"></i> Polaris</a>
         </li>
     </ul>
 
