@@ -16,8 +16,8 @@ class user extends BDD
                 return false;
             }
 
-            // Étape 2: Vérifier le mot de passe avec Argon2
-            if (password_verify($mdp, $resultat['mdp'])) {
+            // Étape 2: Comparer le mot de passe en clair
+            if ($mdp === $resultat['mdp']) {
                 // Mot de passe correct
                 return $resultat;
             } else {
@@ -57,8 +57,8 @@ class user extends BDD
                 return "Cet email est déjà utilisé.";
             }
 
-            // Hachage du mot de passe avec Argon2
-            $hashedPassword = password_hash($tab['mdp'], PASSWORD_ARGON2ID);
+            // Utiliser le mot de passe en clair (non recommandé)
+            $clearPassword = $tab['mdp'];
 
             // Insertion de l'utilisateur dans la base de données
             $requete = "INSERT INTO user (nom, prenom, etablissement, email, mdp) 
@@ -68,7 +68,7 @@ class user extends BDD
                 ":prenom" => $tab['prenom'],
                 ":etablissement" => $tab['etablissement'],
                 ":email" => $tab['email'],
-                ":mdp" => $hashedPassword
+                ":mdp" => $clearPassword
             );
 
             $insert = $this->unPDO->prepare($requete);
